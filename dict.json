@@ -1,0 +1,27 @@
+{
+	"dog": {
+		"emoji": "\xF0\x9F\x90\xB6",
+		"list": {
+			"Гав": true,
+			"Ваф": true,
+			"Вуф": true,
+			"Тяв": true,
+			"Уф": true,
+			"Врррррр": false,
+			"Грррррр": false
+		}
+        },
+	"cat": {
+		"emoji": "\xF0\x9F\x98\xBA",
+		"list": {
+			"Миу": true,
+			"Мяу": true,
+			"Мий": true,
+			"Мау": true,
+			"Мя": true,
+			"Ми": true,
+			"Шшшшшш": false,
+			"Вяяяяр": false
+		}
+	}
+}
