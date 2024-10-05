@@ -20,28 +20,59 @@ type Config struct {
 	ConfigDebug bool `json:"debug"`	
 }
 
+type Phrases struct {
+	prase string
+	multi bool
+}
+
+type Animal struct {
+	name string
+	emoji string
+	phrases []Phrases
+}
+
+type Animals struct {
+	animals []Animal
+}
+
 var (
 	standardResponses = map[string][]string{
 		"спасибо": {"Пожалуйста!", "Рад помочь!", "Не за что!"},
 		"хорошо":  {"Отлично!", "Замечательно!", "Прекрасно!"},
 		"окей":    {"Понял вас!", "Хорошо!", "Ясно!"},
 	}
+
+
 )
 
 
 func main() {
 	var reply string
+	var config Config
+	animals := Animals{}
 
 	// Config block
-	file, err := ioutil.ReadFile("config.json")
+	configFile, err := ioutil.ReadFile("config.json")
 	if err != nil {
 		log.Fatal("Can't read config.json file", err)
 	}
-	var config Config
-	err = json.Unmarshal(file, &config)
+	err = json.Unmarshal(configFile, &config)
 	if err != nil {
 		log.Fatal("Can't unmarshal config.json", err)
 	}
+
+	// Get Animals
+	animalsFile, err := ioutil.ReadFile("animals.json")
+	if err != nil {
+		log.Fatal("Can't read animals.json file", err)
+	}
+	log.Println(animalsFile)
+	err = json.Unmarshal(animalsFile, &animals)
+	if err != nil {
+		log.Fatal("Can't unmarshal animals.json", err)
+	}
+
+	log.Println(animals)
 
 	// Get SECRET
 	secretToken := os.Getenv("ANIMALOT_SECRET_TOKEN")
@@ -80,7 +111,7 @@ func main() {
 			reply = responses[rand.Intn(len(responses))]
 		} else {
 			// Ask a random question
-			reply = dog + questions[rand.Intn(len(questions))]
+//			reply = dog + questions[rand.Intn(len(questions))]
 		}
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)

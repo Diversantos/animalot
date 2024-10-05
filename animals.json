@@ -1,0 +1,27 @@
+{
+	"animals": [
+		{"name": "dog",
+		"emoji": "dog)",
+		"phrases": [
+			{"phrase":"Гав", "multi": true},
+			{"phrase":"Ваф", "multi": true},
+			{"phrase":"Вуф", "multi": true},
+			{"phrase":"Тяв", "multi": true},
+			{"phrase":"Уф", "multi": true},
+			{"phrase":"Вррррр", "multi": false},
+			{"phrase":"Гррррр", "multi": false}
+		]},
+		{"name": "cat",
+		"emoji": "cat)",
+		"phrases": [
+			{"phrase":"Миу", "multi": true},
+			{"phrase":"мяу", "multi": true},
+			{"phrase":"Мий", "multi": true},
+			{"phrase":"Мау", "multi": true},
+			{"phrase":"Мя", "multi": true},
+			{"phrase":"Ми", "multi": true},
+			{"phrase":"Шшшшшшш", "multi": false},
+			{"phrase":"Вяяяяяр", "multi": false}
+		]}
+	]
+}
