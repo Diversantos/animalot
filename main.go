@@ -20,20 +20,22 @@ type Config struct {
 	ConfigDebug bool `json:"debug"`	
 }
 
-type Phrases struct {
-	prase string
-	multi bool
+
+type Animals struct {
+	Animals []Animal `json:"animals"`
 }
 
 type Animal struct {
-	name string
-	emoji string
-	phrases []Phrases
+	Name string `json:"name"`
+	Emoji string `json:"emoji"`
+	Phrases []PhrasesList `json:"phrases"`
 }
 
-type Animals struct {
-	animals []Animal
+type PhrasesList struct {
+	Phrase string `json:"phrase"`
+	Multi bool `json:"multi"`
 }
+
 
 var (
 	standardResponses = map[string][]string{
@@ -41,8 +43,6 @@ var (
 		"хорошо":  {"Отлично!", "Замечательно!", "Прекрасно!"},
 		"окей":    {"Понял вас!", "Хорошо!", "Ясно!"},
 	}
-
-
 )
 
 
@@ -66,13 +66,19 @@ func main() {
 	if err != nil {
 		log.Fatal("Can't read animals.json file", err)
 	}
-	log.Println(animalsFile)
-	err = json.Unmarshal(animalsFile, &animals)
+
+	err = json.Unmarshal([]byte(animalsFile), &animals)
 	if err != nil {
 		log.Fatal("Can't unmarshal animals.json", err)
 	}
 
-	log.Println(animals)
+	log.Println(animals.Animals[0].Phrases[0].Phrase)
+
+	for i := range animals.Animals {
+		log.Println(animals.Animals[i].Name)
+		log.Println(animals.Animals[i].Emoji)
+	}
+
 
 	// Get SECRET
 	secretToken := os.Getenv("ANIMALOT_SECRET_TOKEN")

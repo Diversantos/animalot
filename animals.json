@@ -1,7 +1,7 @@
 {
 	"animals": [
 		{"name": "dog",
-		"emoji": "dog)",
+		"emoji": "\\xF0\\x9F\\x90\\xB6",
 		"phrases": [
 			{"phrase":"Гав", "multi": true},
 			{"phrase":"Ваф", "multi": true},
@@ -12,7 +12,7 @@
 			{"phrase":"Гррррр", "multi": false}
 		]},
 		{"name": "cat",
-		"emoji": "cat)",
+		"emoji": "\\xF0\\x9F\\x98\\xBA",
 		"phrases": [
 			{"phrase":"Миу", "multi": true},
 			{"phrase":"мяу", "multi": true},
