@@ -36,6 +36,17 @@ type PhrasesList struct {
 	Multi bool `json:"multi"`
 }
 
+func (p *Animals) list() {
+        for i := range p.Animals {
+                animal := p.Animals[i]
+                log.Println(animal.Emoji + " " + animal.Name)
+        }
+}
+
+func (p *Animal) Tell() {
+	log.Println(p.Phrases)
+}
+
 
 var (
 	standardResponses = map[string][]string{
@@ -72,12 +83,10 @@ func main() {
 		log.Fatal("Can't unmarshal animals.json", err)
 	}
 
+	log.Println(animals)
 	log.Println(animals.Animals[0].Phrases[0].Phrase)
 
-	for i := range animals.Animals {
-		log.Println(animals.Animals[i].Name)
-		log.Println(animals.Animals[i].Emoji)
-	}
+	animals.list()
 
 
 	// Get SECRET
