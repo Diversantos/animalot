@@ -12,6 +12,8 @@ import (
 	"os"
 	"encoding/json"
 	"io/ioutil"
+	"net/http"
+	_ "net/http/pprof"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -36,6 +38,8 @@ var (
 
 
 func main() {
+	go http.ListenAndServe("localhost:6060", nil)
+
 	var reply string
 
 	// Config block
